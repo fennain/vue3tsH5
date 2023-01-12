@@ -36,6 +36,9 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+/**
+ * 路由前置守卫
+ */
 router.beforeEach((to, from, next) => {
   console.log(to);
   next();

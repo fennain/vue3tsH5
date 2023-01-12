@@ -7,7 +7,7 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 onMounted(() => {
-  console.log("Mounted");
+  console.log(import.meta.env.VITE_BASE_URL);
 });
 </script>
 <style lang="scss" scoped>
