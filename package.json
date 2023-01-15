@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vant/use": "^1.4.4",
     "amfe-flexible": "^2.2.1",
     "axios": "^1.2.2",
     "path": "^0.12.7",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@vitejs/plugin-vue": "^4.0.0",
+    "js-md5": "^0.7.3",
     "typescript": "^4.9.3",
     "unplugin-vue-components": "^0.22.12",
     "vite": "^4.0.0",

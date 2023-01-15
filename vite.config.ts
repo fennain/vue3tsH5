@@ -7,6 +7,7 @@ import postcssImport from "postcss-pxtorem";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "./",
   plugins: [
     vue(),
     Components({
@@ -27,8 +28,15 @@ export default defineConfig({
           // 这里的rootValue就是你的设计稿大小
           rootValue: 37.5,
           propList: ["*"],
+          minPixelValue: 2,
         }),
       ],
+    },
+    preprocessorOptions: {
+      // 导入scss预编译程序
+      scss: {
+        additionalData: `@use "@/style.scss" as *;`,
+      },
     },
   },
 });

@@ -7,24 +7,21 @@
       <van-swipe-item>4</van-swipe-item>
     </van-swipe>
   </van-sticky>
-  <div>{{ store.count }}</div>
   <van-button type="primary" @click="addCount">主要按钮</van-button>
   <p v-for="(item, index) in 15" :key="index">{{ item }}</p>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <script setup lang="ts">
-import HelloWorld from "@/components/HelloWorld.vue";
-import { userStore } from "@/store/modules/user";
+import { UserStore } from "@/store/modules/user";
 import { ref, onMounted, reactive, computed, toRaw } from "vue";
 
-const store = userStore();
+const userStore = UserStore();
 const a = reactive({ name: "test" });
 onMounted(() => {
-  console.log(store.count, a);
+  console.log(a);
 });
 const addCount = () => {
-  store.setCount(store.count + 1);
+  // userStore.setCount(userStore.count + 1);
 };
 </script>
 

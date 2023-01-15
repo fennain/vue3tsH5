@@ -2,9 +2,11 @@ lockfileVersion: 5.4
 
 specifiers:
   '@types/node': ^18.11.18
+  '@vant/use': ^1.4.4
   '@vitejs/plugin-vue': ^4.0.0
   amfe-flexible: ^2.2.1
   axios: ^1.2.2
+  js-md5: ^0.7.3
   path: ^0.12.7
   pinia: 2.0.0-rc.10
   pinia-plugin-persistedstate: ^3.0.2
@@ -20,6 +22,7 @@ specifiers:
   vue-tsc: ^1.0.11
 
 dependencies:
+  '@vant/use': registry.npmmirror.com/@vant/use/1.4.4
   amfe-flexible: registry.npmmirror.com/amfe-flexible/2.2.1
   axios: registry.npmmirror.com/axios/1.2.2
   path: registry.npmmirror.com/path/0.12.7
@@ -35,6 +38,7 @@ dependencies:
 devDependencies:
   '@types/node': registry.npmmirror.com/@types/node/18.11.18
   '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/4.0.0_vite@4.0.4+vue@3.2.45
+  js-md5: registry.npmmirror.com/js-md5/0.7.3
   typescript: registry.npmmirror.com/typescript/4.9.4
   unplugin-vue-components: registry.npmmirror.com/unplugin-vue-components/0.22.12_vue@3.2.45
   vite: registry.npmmirror.com/vite/4.0.4_ovmyjmuuyckt3r3gpaexj2onji
@@ -857,6 +861,12 @@ packages:
     name: is-number
     version: 7.0.0
     engines: {node: '>=0.12.0'}
+
+  registry.npmmirror.com/js-md5/0.7.3:
+    resolution: {integrity: sha512-ZC41vPSTLKGwIRjqDh8DfXoCrdQIyBgspJVPXHBGu4nZlAEvG3nf+jO9avM9RmLiGakg7vz974ms99nEV0tmTQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/js-md5/-/js-md5-0.7.3.tgz}
+    name: js-md5
+    version: 0.7.3
+    dev: true
 
   registry.npmmirror.com/klona/2.0.5:
     resolution: {integrity: sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/klona/-/klona-2.0.5.tgz}

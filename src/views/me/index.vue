@@ -8,12 +8,15 @@
 <script setup lang="ts">
 import { ref, onMounted, reactive, computed, toRaw } from "vue";
 import { useRouter } from "vue-router";
+import { UserStore } from "@/store/modules/user";
 
+const userStore = UserStore();
 const router = useRouter();
 onMounted(() => {
-  console.log("Mounted");
+  console.log(toRaw(userStore.getUserInfo));
 });
 </script>
+
 <style lang="scss" scoped>
 .logo {
   height: 6em;

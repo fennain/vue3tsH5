@@ -1,0 +1,30 @@
+$u-primary: #3c9cff;
+
+* {
+  // margin: 0;
+  // padding: 0;
+  box-sizing: border-box;
+}
+// scss混入
+@mixin flex($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+}
+@mixin center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+@media (prefers-color-scheme: light) {
+  // :root {
+  //   color: #213547;
+  //   background-color: #ffffff;
+  // }
+  // a:hover {
+  //   color: #747bff;
+  // }
+  // button {
+  //   background-color: #f9f9f9;
+  // }
+}

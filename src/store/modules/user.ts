@@ -1,16 +1,22 @@
 import { defineStore } from "pinia";
 import { IUser, IUserInfo } from "../interface/user";
+import { Login } from "@/api/interface";
+import { login } from "@/api/user";
+import { useRouter } from "vue-router";
+import { SysteamStore } from "./systeam";
 
-export const userStore = defineStore({
-  id: "user",
+const router = useRouter();
+
+export const UserStore = defineStore({
+  id: "User",
   persist: true,
   state: (): IUser => ({
     // 用户信息
     userInfo: {
       name: "test",
-      role: [],
+      headImg: "https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg",
     },
-    count: 0,
+    token: "",
   }),
   getters: {
     getUserInfo(): IUserInfo {
@@ -18,12 +24,33 @@ export const userStore = defineStore({
     },
   },
   actions: {
-    setUserInfo(data: IUserInfo) {
-      this.userInfo = data;
+    /**
+     * 登录
+     * @param data
+     * @returns
+     */
+    login(data: Login.ReqLoginForm) {
+      return new Promise<void>((resolve, reject) => {
+        login(data)
+          .then((res) => {
+            this.token = res.data.access_token;
+            // this.userInfo = res.userInfo;
+            console.log(res);
+            resolve();
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
     },
-    setCount(data: number) {
-      console.log(data);
-      this.count = data;
+    // 退出
+    logout() {
+      return new Promise<void>((resolve, reject) => {
+        this.$reset;
+        const systeamStore = SysteamStore();
+        systeamStore.$reset;
+        resolve();
+      });
     },
   },
 });

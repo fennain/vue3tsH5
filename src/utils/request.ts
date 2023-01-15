@@ -1,5 +1,7 @@
 import axios from "axios";
 import { showToast } from "vant";
+import { UserStore } from "@/store/modules/user";
+
 const service = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL, // url = base url + request url
   timeout: 30000, // request timeout
@@ -8,6 +10,10 @@ const service = axios.create({
 // 请求拦截
 service.interceptors.request.use(
   (config: any) => {
+    const userStore = UserStore();
+    if (userStore.token) {
+      config.headers["Authorization"] = userStore.token;
+    }
     return config;
   },
   (error: any) => {
@@ -20,8 +26,9 @@ service.interceptors.response.use(
   (response: any) => {
     const res = response.data;
     if (res.code == 200) {
-      return response.data;
+      return res;
     } else {
+      showToast(res.msg);
       return Promise.reject("error");
     }
   },
