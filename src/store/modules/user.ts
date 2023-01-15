@@ -46,9 +46,9 @@ export const UserStore = defineStore({
     // 退出
     logout() {
       return new Promise<void>((resolve, reject) => {
-        this.$reset;
+        this.$reset();
         const systeamStore = SysteamStore();
-        systeamStore.$reset;
+        systeamStore.$reset();
         resolve();
       });
     },

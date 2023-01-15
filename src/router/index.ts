@@ -5,6 +5,7 @@ import {
   RouteRecordRaw,
 } from "vue-router";
 import { UserStore } from "@/store/modules/user";
+import NProgress from "@/utils/nprogress";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -68,13 +69,16 @@ router.beforeEach((to, from, next) => {
   console.log(to);
   const userStore = UserStore();
 
-  // 3.如果是访问登陆页，没有 token 直接放行，有 token 就在当前页
+  // NProgress 开始
+  NProgress.start();
+
+  // 如果是访问登陆页，没有 token 直接放行，有 token 就在当前页
   if (to.path === "/login") {
     if (!userStore.token) return next();
     else return next(from.fullPath);
   }
 
-  // 4.判断是否有 Token，没有重定向到 login
+  // 判断是否有 Token，没有重定向到 login
   if (!userStore.token) return next("/login");
 
   // 动态设置标题
@@ -82,5 +86,11 @@ router.beforeEach((to, from, next) => {
   document.title = to.meta.title ? `${to.meta.title} - ${title}` : title;
   // 放行
   next();
+});
+/**
+ * 路由后置守卫
+ */
+router.afterEach(() => {
+  NProgress.done();
 });
 export default router;

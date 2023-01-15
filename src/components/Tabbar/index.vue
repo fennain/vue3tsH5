@@ -6,7 +6,7 @@
     <van-tabbar-item replace to="/me" icon="setting-o">我的</van-tabbar-item>
   </van-tabbar>
 </template>
-<script setup lang="ts" name="tabbar">
+<script setup lang="ts">
 import { SysteamStore } from "@/store/modules/systeam";
 const systeamStore = SysteamStore();
 defineProps<{ msg: string }>();

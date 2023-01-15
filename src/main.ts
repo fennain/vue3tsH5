@@ -13,6 +13,7 @@ watch([width, height], () => {
   setRem();
 });
 //
+const app = createApp(App);
 // Toast
 import "vant/es/toast/style";
 
@@ -24,6 +25,19 @@ import "vant/es/notify/style";
 
 // ImagePreview
 import "vant/es/image-preview/style";
-const app = createApp(App);
+
+// 引入全局加载页
+import { loading } from "@/components/Loading/loading";
+app.config.globalProperties.$loadingShow = loading.show;
+app.config.globalProperties.$loadingHide = loading.hide;
+
+// 引入require图片路径封装
+import { require } from "@/utils/require";
+app.config.globalProperties.$require = require;
+
+// 引入全局混入
+import { mixin } from "@/utils/mixin";
+app.mixin(mixin);
+
 // 挂载到 Vue 根实例
 app.use(pinia).use(router).mount("#app");

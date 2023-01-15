@@ -1,5 +1,6 @@
 <template>
   <div class="login-container">
+    <van-image class="logo" fit="contain" :src="$require('@/assets/vue.svg')" />
     <van-form @submit="onSubmit">
       <!-- <van-cell-group inset> -->
       <van-field
@@ -27,14 +28,23 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, reactive, computed, toRaw } from "vue";
+import {
+  ref,
+  onMounted,
+  reactive,
+  computed,
+  toRaw,
+  getCurrentInstance,
+} from "vue";
 import { useRouter } from "vue-router";
 import { Login } from "@/api/interface";
 import { UserStore } from "@/store/modules/user";
 import md5 from "js-md5";
+import logoPlaceholder from "@/assets/vue.svg";
 
 const router = useRouter();
 const userStore = UserStore();
+const { proxy } = getCurrentInstance() as any;
 onMounted(() => {
   console.log(import.meta.env.VITE_BASE_URL);
 });
@@ -45,9 +55,11 @@ const loginForm = reactive({
 });
 const onSubmit = (data: Login.ReqLoginForm) => {
   console.log("submit", data);
+  proxy.$loadingShow();
   userStore
     .login({ ...loginForm, password: md5(loginForm.password) })
     .then(() => {
+      proxy.$loadingHide();
       router.push("/home");
     });
 };
@@ -58,7 +70,11 @@ const onSubmit = (data: Login.ReqLoginForm) => {
   height: 100vh;
   background-color: #f7f8fa;
   padding: 0 10px;
-  @include center();
+  @include center(column);
+  .logo {
+    width: 100px;
+    margin-bottom: 10px;
+  }
   .van-form {
     width: 100%;
   }
