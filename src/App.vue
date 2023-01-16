@@ -4,6 +4,6 @@
 <script setup lang="ts"></script>
 <style lang="scss">
 body {
-  margin: auto !important;
+  background-color: #f7f8fa;
 }
 </style>

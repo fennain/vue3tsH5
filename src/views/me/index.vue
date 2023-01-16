@@ -1,11 +1,16 @@
 <template>
-  <van-cell-group>
+  <van-cell-group title="分组1" inset>
     <van-cell title="单元格" value="内容" />
-    <van-cell title="单元格" value="内容" label="描述信息" />
   </van-cell-group>
-  <p v-for="(item, index) in 15" :key="index">{{ item }}</p>
-  <van-button type="primary" @click="copy">复制</van-button>
-  <van-button type="danger" @click="logout">退出登录</van-button>
+  <van-cell-group title="自定义指令" inset>
+    <van-cell title="复制指令" is-link to="copyDirect" />
+    <van-cell title="防抖指令" is-link to="debounceDirect" />
+    <van-cell title="节流指令" is-link to="throttleDirect" />
+    <van-cell title="长按指令" is-link to="longpressDirect" />
+  </van-cell-group>
+  <div class="oper">
+    <van-button type="danger" @click="logout">退出登录</van-button>
+  </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted, reactive, computed, toRaw } from "vue";
@@ -40,18 +45,8 @@ const logout = () => {
 </script>
 
 <style lang="scss" scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-p {
-  font-size: 20px;
+.oper {
+  margin-top: 10px;
+  @include center;
 }
 </style>

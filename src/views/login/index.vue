@@ -61,6 +61,9 @@ const onSubmit = (data: Login.ReqLoginForm) => {
     .then(() => {
       proxy.$loadingHide();
       router.push("/home");
+    })
+    .catch(() => {
+      proxy.$loadingHide();
     });
 };
 </script>

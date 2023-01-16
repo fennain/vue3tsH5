@@ -14,9 +14,7 @@
 
   <Tabbar msg="测试" />
 </template>
-<script setup lang="ts">
-import Tabbar from "@/components/Tabbar/index.vue";
-</script>
+<script setup lang="ts"></script>
 <style lang="scss" scoped>
 .tabbar-page {
   padding-bottom: var(--van-tabbar-height);

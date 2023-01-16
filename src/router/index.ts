@@ -18,6 +18,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/login/index.vue"),
     meta: {
       title: "登录",
+      keepAlive: false,
     },
   },
   {
@@ -40,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "list",
         component: () => import("@/views/list/index.vue"),
         meta: {
-          keepAlive: false,
+          keepAlive: true,
           title: "列表",
         },
       },
@@ -54,6 +55,42 @@ const routes: Array<RouteRecordRaw> = [
         },
       },
     ],
+  },
+  {
+    path: "/copyDirect",
+    name: "copyDirect",
+    component: () => import("@/views/directives/copyDirect/index.vue"),
+    meta: {
+      title: "复制指令",
+      keepAlive: false,
+    },
+  },
+  {
+    path: "/debounceDirect",
+    name: "debounceDirect",
+    component: () => import("@/views/directives/debounceDirect/index.vue"),
+    meta: {
+      title: "防抖指令",
+      keepAlive: false,
+    },
+  },
+  {
+    path: "/throttleDirect",
+    name: "throttleDirect",
+    component: () => import("@/views/directives/throttleDirect/index.vue"),
+    meta: {
+      title: "节流指令",
+      keepAlive: false,
+    },
+  },
+  {
+    path: "/longpressDirect",
+    name: "longpressDirect",
+    component: () => import("@/views/directives/longpressDirect/index.vue"),
+    meta: {
+      title: "长按指令",
+      keepAlive: false,
+    },
   },
 ];
 const router = createRouter({

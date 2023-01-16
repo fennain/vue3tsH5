@@ -39,5 +39,8 @@ app.config.globalProperties.$require = require;
 import { mixin } from "@/utils/mixin";
 app.mixin(mixin);
 
+// 自定义指令
+import directives from "@/directives/index";
+
 // 挂载到 Vue 根实例
-app.use(pinia).use(router).mount("#app");
+app.use(pinia).use(router).use(directives).mount("#app");

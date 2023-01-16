@@ -7,7 +7,7 @@
   </transition>
 </template>
 
-<script setup lang="ts" name="loading">
+<script setup lang="ts">
 import { Cfg } from "./loading";
 
 defineProps<{ cfg: Cfg }>();
