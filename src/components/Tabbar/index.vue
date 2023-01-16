@@ -1,3 +1,4 @@
+<!-- TabBar -->
 <template>
   <van-tabbar v-model="systeamStore.tabbarIndex">
     <van-tabbar-item replace to="/" icon="home-o">首页</van-tabbar-item>

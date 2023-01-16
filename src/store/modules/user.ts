@@ -9,7 +9,7 @@ const router = useRouter();
 
 export const UserStore = defineStore({
   id: "User",
-  persist: true,
+  persist: true, // 数据持久化
   state: (): IUser => ({
     // 用户信息
     userInfo: {
@@ -43,7 +43,10 @@ export const UserStore = defineStore({
           });
       });
     },
-    // 退出
+    /**
+     * 登出
+     * @returns
+     */
     logout() {
       return new Promise<void>((resolve, reject) => {
         this.$reset();

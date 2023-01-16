@@ -5,7 +5,7 @@ export interface IUserInfo {
 }
 // state
 export interface IUser {
-  // 用户信息
+  /** 用户信息 */
   userInfo: IUserInfo;
   token: string;
 }

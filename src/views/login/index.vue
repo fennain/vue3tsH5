@@ -68,7 +68,6 @@ const onSubmit = (data: Login.ReqLoginForm) => {
 };
 </script>
 <style lang="scss" scoped>
-// $u-primary: #3c9cff;
 .login-container {
   height: 100vh;
   background-color: #f7f8fa;
