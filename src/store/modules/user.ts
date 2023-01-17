@@ -2,10 +2,7 @@ import { defineStore } from "pinia";
 import { IUser, IUserInfo } from "../interface/user";
 import { Login } from "@/api/interface";
 import { login } from "@/api/user";
-import { useRouter } from "vue-router";
 import { SysteamStore } from "./systeam";
-
-const router = useRouter();
 
 export const UserStore = defineStore({
   id: "User",
