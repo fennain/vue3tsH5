@@ -16,15 +16,18 @@
 import { ref, onMounted, reactive, computed, toRaw } from "vue";
 import { useRouter } from "vue-router";
 import { UserStore } from "@/store/modules/user";
+import { SysteamStore } from "@/store/modules/systeam";
 import useClipboard from "vue-clipboard3";
 import { showToast } from "vant";
 
 const userStore = UserStore();
+const systeamStore = SysteamStore();
 const router = useRouter();
 const { toClipboard } = useClipboard();
 
 onMounted(() => {
   console.log(toRaw(userStore.getUserInfo));
+  systeamStore.tabbarIndex = 3;
 });
 
 const copy = async () => {

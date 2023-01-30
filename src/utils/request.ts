@@ -9,21 +9,23 @@ const service = axios.create({
 });
 // 请求拦截
 service.interceptors.request.use(
-  (config: any) => {
+  (config) => {
     const userStore = UserStore();
     if (userStore.token) {
-      config.headers["Authorization"] = userStore.token;
+      // config.headers["Authorization"] = userStore.token;
+      typeof config.headers?.set === "function" &&
+        config.headers?.set("Authorization", userStore.token);
     }
     return config;
   },
-  (error: any) => {
+  (error) => {
     return Promise.reject(error);
   }
 );
 
 // 响应拦截
 service.interceptors.response.use(
-  (response: any) => {
+  (response) => {
     const res = response.data;
     if (res.code == 200) {
       return res;
@@ -32,14 +34,14 @@ service.interceptors.response.use(
       return Promise.reject("error");
     }
   },
-  (error: any) => {
+  (error) => {
+    console.log("err" + error); // for debug
     if (error.message === "Network Error") {
       showToast("服务器错误，请稍后重试");
       return Promise.reject(error);
     }
-    console.log("err" + error); // for debug
 
-    showToast(error.message);
+    showToast(error);
 
     return Promise.reject(error);
   }

@@ -19,12 +19,15 @@
 </template>
 
 <script setup lang="ts">
-import { UserStore } from "@/store/modules/user";
 import { ref, onMounted, reactive, computed, toRaw } from "vue";
+import { SysteamStore } from "@/store/modules/systeam";
+
+const systeamStore = SysteamStore();
 
 const a = reactive({ name: "test" });
 onMounted(() => {
-  console.log(a);
+  console.log("onMounted", a);
+  systeamStore.tabbarIndex = 0;
 });
 const addCount = () => {
   // userStore.setCount(userStore.count + 1);

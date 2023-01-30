@@ -37,6 +37,15 @@ const routes: Array<RouteRecordRaw> = [
         },
       },
       {
+        path: "/goodsList",
+        name: "goodsList",
+        component: () => import("@/views/goodsList/index.vue"),
+        meta: {
+          keepAlive: true,
+          title: "商品列表",
+        },
+      },
+      {
         path: "/list",
         name: "list",
         component: () => import("@/views/list/index.vue"),
