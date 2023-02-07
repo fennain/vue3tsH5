@@ -13,6 +13,7 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted, reactive, computed, toRaw } from "vue";
+// https://better-scroll.github.io/docs/zh-CN/
 import BScroll from "@better-scroll/core";
 import ObserveDOM from "@better-scroll/observe-dom";
 import PullDown from "@better-scroll/pull-down";
