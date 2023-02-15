@@ -14,20 +14,26 @@
       <van-swipe-item>4</van-swipe-item>
     </van-swipe>
   </van-sticky>
+  <div>{{ a.name }}</div>
+  <div>{{ b }}</div>
   <van-button type="primary" @click="testMixin">主要按钮</van-button>
   <p v-for="(item, index) in 15" :key="index">{{ item }}</p>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, reactive, computed, toRaw } from "vue";
+import { ref, onMounted, reactive, computed, toRaw, toRef } from "vue";
 import { SysteamStore } from "@/store/modules/systeam";
 
 const systeamStore = SysteamStore();
 
 const a = reactive({ name: "test" });
+const b = toRef(a, "name");
 onMounted(() => {
-  console.log("onMounted", a);
+  console.log("onMounted", a.name, b);
   systeamStore.tabbarIndex = 0;
+});
+const A = computed(() => {
+  return a.name;
 });
 const addCount = () => {
   // userStore.setCount(userStore.count + 1);

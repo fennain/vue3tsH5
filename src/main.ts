@@ -26,11 +26,6 @@ import "vant/es/notify/style";
 // ImagePreview
 import "vant/es/image-preview/style";
 
-// 引入全局加载页
-import { loading } from "@/components/Loading/loading";
-app.config.globalProperties.$loadingShow = loading.show;
-app.config.globalProperties.$loadingHide = loading.hide;
-
 // 引入require图片路径封装
 import { require } from "@/utils/require";
 app.config.globalProperties.$require = require;

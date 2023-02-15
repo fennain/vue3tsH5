@@ -40,11 +40,11 @@ import { useRouter } from "vue-router";
 import { Login } from "@/api/interface";
 import { UserStore } from "@/store/modules/user";
 import md5 from "js-md5";
-import logoPlaceholder from "@/assets/vue.svg";
+import { SysteamStore } from "@/store/modules/systeam";
 
 const router = useRouter();
 const userStore = UserStore();
-const { proxy } = getCurrentInstance() as any;
+const systeamStore = SysteamStore();
 onMounted(() => {
   console.log(import.meta.env.VITE_BASE_URL);
 });
@@ -55,15 +55,15 @@ const loginForm = reactive({
 });
 const onSubmit = (data: Login.ReqLoginForm) => {
   console.log("submit", data);
-  proxy.$loadingShow();
+  systeamStore.loadingShow();
   userStore
     .login({ ...loginForm, password: md5(loginForm.password) })
     .then(() => {
-      proxy.$loadingHide();
+      systeamStore.loadingHide();
       router.push("/home");
     })
     .catch(() => {
-      proxy.$loadingHide();
+      systeamStore.loadingHide();
     });
 };
 </script>
