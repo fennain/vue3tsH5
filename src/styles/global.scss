@@ -1,0 +1,25 @@
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0 auto !important;
+}
+// @font-face {
+//   font-family: "PingFang";
+//   src: url("../assets/font/PingFang Bold_0.ttf");
+// }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  // font-family: "PingFang";
+}
+body {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  position: relative;
+}
+
+#nprogress .bar {
+  background: #651774 !important; //这里可以随便写颜色
+}

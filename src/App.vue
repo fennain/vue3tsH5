@@ -1,9 +1,13 @@
+<script setup lang="ts">
+import { useTheme } from '@/hooks/useTheme'
+
+const { theme, themeVars } = useTheme()
+
+</script>
+
 <template>
-  <router-view> </router-view>
+  <VanConfigProvider class="h-full" :theme="theme" :theme-vars="themeVars">
+    <RouterView />
+  </VanConfigProvider>
 </template>
-<script setup lang="ts"></script>
-<style lang="scss">
-body {
-  background-color: #f7f8fa;
-}
-</style>
+

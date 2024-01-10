@@ -1,14 +1,14 @@
 <!-- 全局加载页 -->
 <template>
   <transition name="van-fade">
-    <div class="loading" v-show="cfg.show">
+    <div class="loading flex justify-center items-center" v-if="cfg.show">
       <van-loading size="35px" vertical>{{ cfg.msg }}</van-loading>
     </div>
   </transition>
 </template>
 
 <script setup lang="ts">
-import { Cfg } from "./loading";
+import { Cfg } from "@/hooks/useLoading";
 
 defineProps<{ cfg: Cfg }>();
 </script>
@@ -22,6 +22,5 @@ defineProps<{ cfg: Cfg }>();
   top: 0;
   left: 0;
   z-index: 9999;
-  @include center();
 }
 </style>

@@ -1,19 +1,17 @@
 import { defineStore } from "pinia";
 import { IUser, IUserInfo } from "../interface/user";
-import { Login } from "@/api/interface";
-import { login } from "@/api/user";
-import { SysteamStore } from "./systeam";
+import router from "@/router/index";
 
-export const UserStore = defineStore({
+export const useUserStore = defineStore({
   id: "User",
   persist: true, // 数据持久化
   state: (): IUser => ({
     // 用户信息
     userInfo: {
-      name: "test",
-      headImg: "https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg",
+      headImgUrl: "",
+      nickname: "tourist"
     },
-    token: "",
+    token: null,
   }),
   getters: {
     getUserInfo(): IUserInfo {
@@ -21,36 +19,11 @@ export const UserStore = defineStore({
     },
   },
   actions: {
-    /**
-     * 登录
-     * @param data
-     * @returns
-     */
-    login(data: Login.ReqLoginForm) {
-      return new Promise<void>((resolve, reject) => {
-        login(data)
-          .then((res) => {
-            this.token = res.data.access_token;
-            // this.userInfo = res.userInfo;
-            console.log(res);
-            resolve();
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      });
+    setToken(token: string) {
+      this.token = token;
     },
-    /**
-     * 登出
-     * @returns
-     */
-    logout() {
-      return new Promise<void>((resolve, reject) => {
-        this.$reset();
-        const systeamStore = SysteamStore();
-        systeamStore.$reset();
-        resolve();
-      });
+    updateUserInfo(userInfo: Partial<IUserInfo>) {
+      this.userInfo = { ...this.userInfo, ...userInfo };
     },
   },
 });

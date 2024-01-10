@@ -1,5 +1,5 @@
 <template>
-  <div class="tabbar-page">
+  <div class="tabbar-page h-full">
     <router-view v-slot="{ Component, route }">
       <keep-alive>
         <component

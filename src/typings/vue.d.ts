@@ -15,6 +15,5 @@ declare module "vue" {
   interface ComponentCustomProperties {
     /** vite处理路径 */
     $require: (key: string) => string;
-    testMixin: () => void;
   }
 }

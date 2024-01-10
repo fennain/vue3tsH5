@@ -32,7 +32,6 @@ const tipText = ref("");
 const BS = ref<BScroll>();
 
 onMounted(() => {
-  console.log(import.meta.env.VITE_BASE_URL);
   for (let i = 0; i < 30; i++) {
     list.value.push(i);
   }
@@ -52,10 +51,10 @@ onMounted(() => {
   BS.value.on("pullingUp", pullingUpHandler);
   BS.value.on("pullingDown", pullingDownHandler);
   BS.value.on("enterThreshold", () => {
-    tipText.value = `${ARROW_BOTTOM} Pull down`;
+    tipText.value = `Pull down`;
   });
   BS.value.on("leaveThreshold", () => {
-    tipText.value = `${ARROW_UP} Release`;
+    tipText.value = `Release`;
   });
 });
 const init = () => {
